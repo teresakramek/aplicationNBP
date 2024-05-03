@@ -26,11 +26,12 @@
 <div class="baner full">
   <div class="kratka">
       <h1>Kursy walut NBP</h1>
+      {{ currencies | json }}
       <form>
         <div class="wiersz">
           <select name="currency" id="currency-select">
-            <option value="">--Proszę wybrać którąś z pocji--</option>
-            <option value="dog">PLN</option>
+            <option value="">--Proszę wybrać walutę--</option>
+            <option *ngFor="let currency of currencies" [value]="currency"> {{ currency }}</option> 
           </select>
         </div>
         <div class="wiersz">

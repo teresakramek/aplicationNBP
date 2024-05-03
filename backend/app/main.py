@@ -1,9 +1,18 @@
 from fastapi import FastAPI
 import requests
 import json
-from datetime import datetime, date
+from datetime import date
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:4200"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # healthcheck
 @app.get("/")
