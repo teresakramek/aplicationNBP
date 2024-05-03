@@ -1,0 +1,23 @@
+services:
+  api:
+    build:
+      context: ./backend
+      target: dev-envs
+    container_name: fastapi-application
+    environment:
+      PORT: 8000
+    ports:
+      - '8000:8000'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: "no"
+  web:
+    build:
+      context: frontend/angular
+      target: dev-envs
+    ports:
+      - 4200:4200
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./frontend/angular:/project
+      - /project/node_modules
