@@ -26,20 +26,20 @@
 <div class="baner full">
   <div class="kratka">
       <h1>Kursy walut NBP</h1>
-      <form>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
         <div class="wiersz">
-          <select name="currency" id="currency-select">
+          <select name="currency" id="currency-select" ngModel>
             <option value="">--Proszę wybrać walutę--</option>
             <option *ngFor="let currency of currencies" [value]="currency"> {{ currency }}</option> 
           </select>
         </div>
         <div class="wiersz">
           <label for="start">Zakres początkowy:</label>
-          <input type="date" id="start" name="trip-start" value="2024-05-03" min="2002-01-02" max="2024-05-03" />
+          <input type="date" id="start" name="date_from" value="2024-05-03" min="2002-01-02" max="2024-05-03" ngModel required/>
         </div>
         <div class="wiersz">
-          <label for="start">Zakres końcowy:</label>
-          <input type="date" id="start" name="trip-start" value="2024-05-03" min="2002-01-02" max="2024-05-03" />
+          <label for="end">Zakres końcowy:</label>
+          <input type="date" id="end" name="date_to" value="2024-05-03" min="2002-01-02" max="2024-05-03" ngModel required/>
         </div>
         <input type="submit" value="Wyślij wiadomość">
     </form>

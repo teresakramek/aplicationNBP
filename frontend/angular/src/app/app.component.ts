@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CurrenciesService } from './currencies.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -15,4 +16,10 @@ export class AppComponent {
       this.currencies = data['currencies'];
     });
   }
+
+  onSubmit(f: NgForm): void {
+    console.log(f.value);
+    console.log('Tesia jest super');
+  }
+
 }

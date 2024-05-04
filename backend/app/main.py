@@ -20,7 +20,7 @@ def hello_world():
     return {"message": "OK"}
 
 
-@app.get("/api/exchange-rate/{currency}")
+@app.get("/api/rates/{currency}")
 def currencies(currency: str, date_from: str | None = None):
     # get from and to dates - requires
     if date_from is None:
