@@ -44,6 +44,16 @@
         <input type="submit" value="Wyślij wiadomość">
     </form>
   </div>
+  <table>
+    <tr>
+      <th>Data</th>
+      <th>Kurs</th>
+    </tr>
+    <tr *ngFor="let rate of rates">
+        <td>{{ rate.date }}</td>
+        <td>{{ rate.rate }}</td>
+    </tr>
+  </table>
 </div>
 <div class="galeria full" id="galeria">
   <div class="siatka">

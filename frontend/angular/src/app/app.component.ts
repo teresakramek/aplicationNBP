@@ -11,6 +11,7 @@ import { RateService } from './rate.service';
 export class AppComponent {
 
   currencies: string[] = [];
+  rates: any = [];
   title = 'angular';
 
   constructor(private currenciesService: CurrenciesService, private rateService: RateService) {}
@@ -24,8 +25,9 @@ export class AppComponent {
   onSubmit(f: NgForm): void {
     console.log(f.value);
     console.log('Teresa - dasz radę');
-    const result = this.rateService.getRate(f.value.currency, f.value.date_from, f.value.date_to).subscribe((data) => {
+    this.rateService.getRate(f.value.currency, f.value.date_from, f.value.date_to).subscribe((data) => {
       console.log(data)
+      this.rates = data;
     });
   }
 
