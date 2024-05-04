@@ -10,8 +10,8 @@ export class RateService {
 
   constructor(private http: HttpClient) { }
 
-  getRate(currency:string, date_from:string): Observable<any> {
-    let params = new HttpParams().set("date_from", date_from);
+  getRate(currency:string, date_from:string, date_to: string): Observable<any> {
+    let params = new HttpParams().set("date_from", date_from).set("date_to", date_to);
     return this.http.get(`${this.url}${currency}`, { params: params });
   }
 }

@@ -21,13 +21,15 @@ def hello_world():
 
 
 @app.get("/api/rates/{currency}")
-def currencies(currency: str, date_from: str | None = None):
+def currencies(currency: str, date_from: str | None = None,  date_to: str | None = None):
     # get from and to dates - requires
     if date_from is None:
         date_from = date.today().strftime('%Y-%m-%d')
-        print(date_from)
+
+    if date_to is None:
+        date_to = date.today().strftime('%Y-%m-%d')
     
-    response = requests.get(f"https://api.nbp.pl/api/exchangerates/rates/a/{currency}/{date_from}?format=json")
+    response = requests.get(f"https://api.nbp.pl/api/exchangerates/rates/a/{currency}/{date_from}/{date_to}?format=json")
 
     if response.status_code == 200:
         return response.json()

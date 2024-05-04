@@ -24,7 +24,7 @@ export class AppComponent {
   onSubmit(f: NgForm): void {
     console.log(f.value);
     console.log('Teresa - dasz radę');
-    const result = this.rateService.getRate(f.value.currency, f.value.date_from).subscribe((data) => {
+    const result = this.rateService.getRate(f.value.currency, f.value.date_from, f.value.date_to).subscribe((data) => {
       console.log(data)
     });
   }
