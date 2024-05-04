@@ -73,8 +73,9 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 25px;
 }
 .baner .kratka h1{
     font-weight: 200;
@@ -83,14 +84,12 @@
 .baner .kratka form {
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between;
-    align-items: center; */
-    display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
 }
 
-.baner .kratka form button {
+.baner .kratka form [type=submit] {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -102,13 +101,14 @@
     margin: auto 10px;
     cursor: pointer;
     border-radius: 10px;
+    width: 50%;
 }
 
-.baner .kratka form button:hover {
+.baner .kratka form [type=submit]:hover {
     background-color: #45a049;
 }
 
-.baner .kratka form button:active {
+.baner .kratka form [type=submit]:active {
     background-color: #367C39;
 }
 
