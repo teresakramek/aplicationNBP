@@ -22,4 +22,15 @@ services:
     volumes:
       - ./frontend/angular:/project
       - ./frontend/angular/node_modules:/project/node_modules
-      
+  
+  db:
+    image: postgres:latest
+    container_name: db_container
+    environment:
+      POSTGRES_DB: aplicationNBP
+      POSTGRES_USER: NBP_admin
+      POSTGRES_PASSWORD: 05Qwerty33#2024
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data

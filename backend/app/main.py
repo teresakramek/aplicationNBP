@@ -3,6 +3,10 @@ import requests
 from datetime import date
 from fastapi.middleware.cors import CORSMiddleware
 from service.rate import RateService
+from database import SessionLocal, engine
+import models
+
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
