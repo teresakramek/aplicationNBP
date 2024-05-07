@@ -77,11 +77,91 @@
     align-items: center;
     gap: 25px;
 }
-.baner .kratka h1{
+.baner .kratka h1 {
     font-weight: 200;
 }
 
-.baner .kratka form {
+.form-container {
+    display: flex;
+    align-items: end;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.form-group {
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: 200;
+}
+
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#tableRates {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #fff;
+    overflow: hidden;
+    width: 100%;
+}
+
+#tableRates .table-row {
+    display: flex;
+}
+
+#tableRates .table-cell {
+    flex: 1;
+    padding: 10px;
+    border-right: 2px solid #fff;
+    text-align: center;
+}
+
+#tableRates .table-cell:last-child {
+    border-right: none;
+}
+
+#tableRates .table-header {
+    background-color: #007bff;
+    font-weight: 200;
+    display: flex;
+    justify-content: space-around;
+}
+
+#tableRates .table-container,
+#tableRates .table-cell,
+#tableRates .table-row {
+    
+}
+
+
+
+/* .baner .kratka form {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -120,7 +200,7 @@
     border-radius: 5px;
     font-size: 16px;
     width: 90%;
-}
+} */
 
 .galeria{
     display: flex;
