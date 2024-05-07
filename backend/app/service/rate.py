@@ -1,17 +1,17 @@
 from datetime import datetime, timedelta
 import requests 
-from models import Rate
+from model.models import Rate
 
 
 class RateService:
+
+    __BASE_API_URL = "https://api.nbp.pl/api/exchangerates/rates/a/"
     """
     Pobranie kursu dla waluty z przedziału czasowego
     """
     @staticmethod
-    def rates(currency: str, date_from: str, date_to: str) -> list|None:
-        response = requests.get(
-            f"https://api.nbp.pl/api/exchangerates/rates/a/{currency}/{date_from}/{date_to}?format=json"
-            )
+    def rates(currency: str, date_from: datetime, date_to: datetime) -> list|None:
+        response = requests.get(f"{RateService.__BASE_API_URL}{currency}/{date_from.strftime('%Y-%m-%d')}/{date_to.strftime('%Y-%m-%d')}?format=json")
         
         if response.status_code == 200:
             return list(map(lambda x: {"date": x['effectiveDate'], "rate": x['mid'] }, response.json()['rates']))
@@ -51,6 +51,4 @@ class RateServiceMigration:
                 rate_integer = int(result['rate'] * 1000)
                 self.db_session.add(Rate(currency=currency, rate=rate_integer, rate_date=result['date']))
                 self.db_session.commit()
-
-
     

@@ -1,12 +1,14 @@
 from fastapi import FastAPI
-import requests
-from datetime import date
+from datetime import date, datetime
 from fastapi.middleware.cors import CORSMiddleware
 from service.rate import RateService
-from backend.app.database.database import engine
-import models
+from database.database import engine, Base
+from model.models import Rate
+from database.database import get_db
 
-models.Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
+
+db = next(get_db())
 
 app = FastAPI()
 
@@ -26,20 +28,29 @@ def hello_world():
 
 @app.get("/api/rates/{currency}")
 def currencies(currency: str, date_from: str | None = None,  date_to: str | None = None):
+
     if date_from is None:
-        date_from = date.today().strftime('%Y-%m-%d')
+        date_from = datetime.today().strftime("%Y-%m-%d")
 
     if date_to is None:
-        date_to = date.today().strftime('%Y-%m-%d')
+        date_to = datetime.today().strftime("%Y-%m-%d")
 
-    rates = RateService().rates(currency, date_from, date_to)
+    date_from = datetime.strptime(date_from, "%Y-%m-%d")
+    date_to = datetime.strptime(date_to, "%Y-%m-%d")
 
-    if rates:
-        return rates
+    date_diff = date_to - date_from
+    
+    if date_diff.days <= 93:
+        rates = RateService().rates(currency, date_from, date_to)
 
-    return { "error": f"cannot fetch rates for {currency}" }
+        if rates:
+            return rates
+        
+    return db.query(Rate).filter(Rate.currency == currency, Rate.rate_date >= date_from, Rate.rate_date <= date_to).all()
+
 
 
 @app.get("/api/currencies")
 def currencies():
     return {'currencies': ['USD', 'EUR', 'GPB']}
+

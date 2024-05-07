@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Date
+from database.database import Base
 
-from backend.app.database.database import Base
 
 class Rate(Base):
     __tablename__ = "rates"
@@ -12,6 +12,7 @@ class Rate(Base):
 
 
 class Currency(Base):
+    """Dodanie zmigrowanych walut, dodanie relacji"""
     __tablename__ = "currency"
 
     id = Column(Integer, primary_key=True)
