@@ -46,11 +46,16 @@ def currencies(currency: str, date_from: str | None = None,  date_to: str | None
         if rates:
             return rates
         
-    return db.query(Rate).filter(Rate.currency == currency, Rate.rate_date >= date_from, Rate.rate_date <= date_to).all()
+    rates = db.query(Rate).filter(Rate.currency == currency, Rate.rate_date >= date_from, Rate.rate_date <= date_to).all()
+
+
+
+    return list(map(lambda rate: rate.read(), rates))
 
 
 
 @app.get("/api/currencies")
 def currencies():
+    """@TODO move to table of synchornized values"""
     return {'currencies': ['USD', 'EUR', 'GPB']}
 

@@ -31,20 +31,19 @@ class RateServiceMigration:
         API NPB umozliwia pobranie jedynie maksymalnie 93-dniowego zakresu
         Migracja do bazy apliacji umozliwia wyswietlenie analizy dla dluzszych przedzialow czasu
     """
-    def migrate(self, currency: str, date_from: str, date_to: str):
+    def migrate(self, currency: str, date_from: datetime, date_to: datetime):
         
-        start_date = datetime.strptime(date_from, "%Y-%m-%d")
-        end_date = datetime.strptime(date_to, "%Y-%m-%d")
+        start_date = date_from
+        end_date = date_to
         delta = timedelta(days=self.__MAX_API_DAY_RANGE)
 
         current_date = start_date
         while current_date <= end_date:
-            range_from = current_date.strftime("%Y-%m-%d")
+            range_from = current_date
             current_date += delta
-            range_to = current_date.strftime("%Y-%m-%d")
 
-            print(f"Requesting range: {range_from} - {range_to}")
-            results = RateService.rates(currency, range_from, range_to)
+            print(f"Requesting range: {range_from.strftime('%Y-%m-%d')} - {current_date.strftime('%Y-%m-%d')}")
+            results = RateService.rates(currency, range_from, current_date)
             print(f"Results count {len(results)}")
 
             for result in results:
