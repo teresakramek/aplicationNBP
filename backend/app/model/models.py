@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import Column, Integer, String, Date, Boolean
+from sqlalchemy.orm import relationship
 from database.database import Base
 from sqlalchemy.ext.hybrid import hybrid_property
 
@@ -22,7 +23,6 @@ class Rate(Base):
         }
 
 
-
 class Currency(Base):
     """Dodanie zmigrowanych walut, dodanie relacji"""
     __tablename__ = "currency"
@@ -30,3 +30,12 @@ class Currency(Base):
     id = Column(Integer, primary_key=True)
     code = Column(String, index=True)
     name = Column(String)
+
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True)
+    email = Column(String, unique=True, index=True)
+    hashed_password = Column(String)
+    is_active = Column(Boolean, default=True)
