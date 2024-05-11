@@ -8,13 +8,24 @@ class User(BaseModel):
     full_name: Union[str, None] = None
     disabled: Union[bool, None] = None
 
+    class Config:
+        orm_mode = True
+
+
 
 class UserBase(BaseModel):
     email: str
 
+    class Config:
+        orm_mode = True
+
 
 class UserCreate(UserBase):
     password: str
+
+    class Config:
+        orm_mode = True
+
 
 class UserInDB(User):
     hashed_password: str

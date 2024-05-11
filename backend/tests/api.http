@@ -19,8 +19,8 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "email": "custom@email",
-    "password": "developer"
+    "email": "user@com.pl",
+    "password": "custom_password"
 }
 
 ### Get possible currencies rates
