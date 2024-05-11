@@ -1,0 +1,27 @@
+@baseApiUrl = http://localhost:8000
+@username =johndoe
+@password=secret
+
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNzE1NDIxOTUzfQ.XPn-nwXiuB6p0imREA-aIAKG8gDlgFVT-0c7T1Jm_m4
+
+
+### Login - generate access token
+POST {{baseApiUrl}}/api/login HTTP/1.1
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+username={{username}}&password={{password}}
+
+
+### Register user
+
+
+### Get possible currencies rates
+GET {{baseApiUrl}}/api/currencies
+Authorization: Bearer {{token}}
+
+
+### Get rates
+GET {{baseApiUrl}}/api/rates/USD?date_from=2002-01-01
+
+

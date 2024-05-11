@@ -9,8 +9,8 @@ from model.models import Rate
 from database.database import get_db
 from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from security import authenticate_user, fake_users_db, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES
-from schemas import Token
+from security import authenticate_user, fake_users_db, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_user, get_current_active_user
+from schemas import Token, User
 
 
 Base.metadata.create_all(bind=engine)
@@ -27,7 +27,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.post("/token")
+@app.post("/api/login")
 async def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
 ) -> Token:
@@ -80,7 +80,16 @@ def currencies(currency: str, date_from: str | None = None,  date_to: str | None
 
 
 @app.get("/api/currencies")
-def currencies():
+async def currencies(
+    current_user: Annotated[User, Depends(get_current_active_user)],
+):
     """@TODO move to table of synchornized values"""
     return {'currencies': ['USD', 'EUR', 'GPB']}
+
+
+@app.get("/api/users/me/", response_model=User)
+async def read_users_me(
+    current_user: Annotated[User, Depends(get_current_active_user)],
+):
+    return current_user
 
