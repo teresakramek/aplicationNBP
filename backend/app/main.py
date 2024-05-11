@@ -1,16 +1,17 @@
-from typing import Annotated, Union
+from typing import Annotated
 
 from fastapi import FastAPI, HTTPException, Depends, status
+from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from fastapi.middleware.cors import CORSMiddleware
 from service.rate import RateService
 from database.database import engine, Base
 from model.models import Rate
 from database.database import get_db
-from passlib.context import CryptContext
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordRequestForm
 from security import authenticate_user, fake_users_db, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_user, get_current_active_user
-from schemas import Token, User
+from schemas import Token, User, UserCreate
+from user_manager import create_user, get_user_by_email
 
 
 Base.metadata.create_all(bind=engine)
@@ -26,6 +27,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 @app.post("/api/login")
 async def login_for_access_token(
@@ -92,4 +94,12 @@ async def read_users_me(
     current_user: Annotated[User, Depends(get_current_active_user)],
 ):
     return current_user
+
+
+@app.post("/api/register", response_model=User)
+def create_user(user: UserCreate, db: Session = Depends(get_db)):
+    db_user = get_user_by_email(db, email=user.email)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return create_user(db=db, user=user)
 
