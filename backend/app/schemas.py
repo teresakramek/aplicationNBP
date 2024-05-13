@@ -20,7 +20,7 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    email: Union[str, None] = None
+    username: Union[str, None] = None
 
 
 class Rate(BaseModel):

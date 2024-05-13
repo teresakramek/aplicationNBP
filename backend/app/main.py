@@ -55,7 +55,7 @@ async def login_for_access_token(
 
 
 @app.post("/api/register", response_model=UserBase)
-async def create_user(user: UserCreate, db: Session = Depends(get_db)):
+async def create_user(user: UserCreate):
     db_user = user_manager.get_user_by_email(email=user.email)
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
@@ -63,7 +63,7 @@ async def create_user(user: UserCreate, db: Session = Depends(get_db)):
 
 
 @app.get("/api/rates/{currency}")
-def currencies(currency: str, date_from: str | None = None,  date_to: str | None = None):
+async def currencies(current_user: Annotated[User, Depends(get_current_active_user)], currency: str, date_from: str | None = None,  date_to: str | None = None):
 
     if date_from is None:
         date_from = datetime.today().strftime("%Y-%m-%d")

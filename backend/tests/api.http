@@ -4,7 +4,7 @@
 
 @username=usercom
 
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqb2huZG9lIiwiZXhwIjoxNzE1NDIxOTUzfQ.XPn-nwXiuB6p0imREA-aIAKG8gDlgFVT-0c7T1Jm_m4
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyY29tIiwiZXhwIjoxNzE1NjE5NDI3fQ.ZjSwzOtBIIoRr1bTc2RQt8lUWaNS-mBsYsDha41Ry1g
 
 
 ### Login - generate access token
@@ -26,12 +26,12 @@ Content-Type: application/json
     "password": "custom_password"
 }
 
-### Get possible currencies rates
+### Get possible currencies rates 
 GET {{baseApiUrl}}/api/currencies
 Authorization: Bearer {{token}}
 
 
 ### Get rates
 GET {{baseApiUrl}}/api/rates/USD?date_from=2002-01-01
-
+Authorization: Bearer {{token}}
 
