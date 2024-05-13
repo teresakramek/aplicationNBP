@@ -1,34 +1,17 @@
 from pydantic import BaseModel
 from typing import Union
 
-# move to pydatic schema.py
 class User(BaseModel):
-    username: str
     email: Union[str, None] = None
-    full_name: Union[str, None] = None
-    disabled: Union[bool, None] = None
-
-    class Config:
-        orm_mode = True
-
 
 
 class UserBase(BaseModel):
     email: str
 
-    class Config:
-        orm_mode = True
-
 
 class UserCreate(UserBase):
+    username: str
     password: str
-
-    class Config:
-        orm_mode = True
-
-
-class UserInDB(User):
-    hashed_password: str
 
 
 class Token(BaseModel):
@@ -37,4 +20,9 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    username: Union[str, None] = None
+    email: Union[str, None] = None
+
+
+class Rate(BaseModel):
+    rate: float
+    currency: str

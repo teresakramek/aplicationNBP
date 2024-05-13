@@ -9,12 +9,13 @@ from database.database import engine, Base
 from model.models import Rate
 from database.database import get_db
 from fastapi.security import OAuth2PasswordRequestForm
-from security import authenticate_user, fake_users_db, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_user, get_current_active_user
+from security import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_active_user
 from schemas import Token, User, UserCreate, UserBase
 import user_manager
 
 
 Base.metadata.create_all(bind=engine)
+
 
 db = next(get_db())
 
@@ -29,15 +30,21 @@ app.add_middleware(
 )
 
 
+# healthcheck
+@app.get("/")
+def health_check():
+    return {"message": "OK"}
+
+
 @app.post("/api/login")
 async def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
 ) -> Token:
-    user = authenticate_user(fake_users_db, form_data.username, form_data.password)
+    user = authenticate_user(form_data.username, form_data.password)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect username or password",
+            detail="Incorrect email or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -46,10 +53,13 @@ async def login_for_access_token(
     )
     return Token(access_token=access_token, token_type="bearer")
 
-# healthcheck
-@app.get("/")
-def health_check():
-    return {"message": "OK"}
+
+@app.post("/api/register", response_model=UserBase)
+async def create_user(user: UserCreate, db: Session = Depends(get_db)):
+    db_user = user_manager.get_user_by_email(email=user.email)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return user_manager.create_user(user=user)
 
 
 @app.get("/api/rates/{currency}")
@@ -96,10 +106,5 @@ async def read_users_me(
     return current_user
 
 
-@app.post("/api/register", response_model=UserBase)
-async def create_user(user: UserCreate, db: Session = Depends(get_db)):
-    db_user = user_manager.get_user_by_email(db, email=user.email)
-    if db_user:
-        raise HTTPException(status_code=400, detail="Email already registered")
-    return user_manager.create_user(db=db, user=user)
+
 
