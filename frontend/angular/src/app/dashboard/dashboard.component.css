@@ -1,0 +1,433 @@
+.header{
+    background: #fff;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top:0;
+    z-index:99999999;
+}
+.header .logo{
+    flex:1;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header .logo img{
+    height:80px;
+    width:auto;
+}
+.header .menu{
+    flex:8;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header .menu ul{
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+    justify-content: space-around;
+    width:100%;
+    height:100%;
+}
+.header .menu ul a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height:100%;
+    color:#000;
+    text-decoration: none;
+    transition: 0.7s;
+}
+.header .menu ul a:hover{
+    background:#c00;
+    color:#fff;
+}
+.header .menu ul a li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:100%;
+    height:100%;
+}
+.header .social-media {
+    flex:1;
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    gap:10px;
+}
+.header .social-media a,
+.header .social-media a:visited {
+    color:#000;
+    font-size:2rem;
+}
+.header .social-media a:hover i.fa-square-facebook {
+    color:blue;
+}
+.header .social-media a:hover i.fa-square-youtube {
+    color:red;
+}
+.baner{
+    background: url(../../img/background_1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+.baner .kratka{
+    margin: 0 5%;
+    width:90%;
+    min-height:300px;
+    background: rgba(0,0,0,0.5);
+    color:#fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+.baner .kratka h1 {
+    font-weight: 200;
+}
+
+.form-container {
+    display: flex;
+    align-items: end;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.form-group {
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: 200;
+}
+
+input[type="date"],
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ 
+
+#tableRates {
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  
+  caption {
+    caption-side: bottom;
+    padding: 10px;
+    font-weight: bold;
+  }
+  
+  #tableRates thead {
+  /*   background-color: rgb(228 240 245); */
+    background-color: rgba(71, 207, 115, 1);
+  }
+  
+  #tableRates th,
+  #tableRates td {
+    border: 1px solid rgb(160 160 160);
+    padding: 8px 10px;
+  }
+  
+  #tableRates td:last-of-type {
+    text-align: center;
+  }
+  
+  #tableRates tbody > tr:nth-of-type(even) {
+    background-color: rgb(237 238 242);
+  }
+
+
+
+/* .baner .kratka form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.baner .kratka form [type=submit] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: auto 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.baner .kratka form [type=submit]:hover {
+    background-color: #45a049;
+}
+
+.baner .kratka form [type=submit]:active {
+    background-color: #367C39;
+}
+
+.baner .kratka form select,
+.baner .kratka form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 90%;
+} */
+
+.galeria{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-margin-top: 100px;
+}
+.galeria .siatka{
+    padding:40px;
+    position: relative;
+    display: grid;
+    width:900px;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 200px 200px 200px 200px;
+    grid-template-areas: "img1 img3 img5"
+                         "img1 img3 img6"
+                         "img2 img3 img6"
+                         "img2 img4 img4";
+}
+.galeria .siatka .item{
+    position: relative;
+    border: 1px solid #ccc;
+}
+.galeria .siatka img{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit: cover;/*powoduje wypełnienie całego obszaru diva*/
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+.galeria .siatka img:hover{
+    filter: grayscale(0);
+    opacity: 1;
+}
+/*.galeria:hover .siatka img:not(:hover){
+    filter: grayscale(1);
+    opacity: 0.5;
+}*/
+.galeria .siatka .img1{
+    grid-area: img1;/*definiuje nazwę obszaru grida dla elementu zawierającego tę klasę*/
+}
+.galeria .siatka .img2{
+    grid-area: img2;
+}
+.galeria .siatka .img3{
+    grid-area: img3;
+}
+.galeria .siatka .img4{
+    grid-area: img4;
+}
+.galeria .siatka .img5{
+    grid-area: img5;
+}
+.galeria .siatka .img6{
+    grid-area: img6;
+}
+.paralaxa{
+    background: url(../../img/background_2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;/*powoduje pokrycie obrazem obszaru całego diva, w którym ten obraz będzie umieszczony jako tło*/
+    background-attachment: fixed;/*powoduje przyklejenie obrazu tła do okna przeglądarki*/
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    scroll-margin-top: 100px;
+}
+.paralaxa .kratka{
+    margin-left:10%;
+    width:400px;
+    min-height:300px;
+    background: rgba(0,0,0,0.5);
+    color:#fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    /*opacity: 0.7;*/
+}
+.paralaxa .kratka h1{
+    font-weight: 200;
+}
+.paralaxa .kratka p{
+    text-align: center;
+}
+.paralaxa .kratka a{
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid #fff;
+    padding: 10px 30px;
+    width:100%;
+    text-align: center;
+    transition: 0.7s;
+}
+.paralaxa .kratka a:hover{
+    background:#fff;
+    color:#000;
+}
+
+.stopka{
+    background:#222;
+    min-height:200px;
+    display: flex;
+    padding: 10px 25px;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    color:#fff;
+    padding:40px;
+}
+.stopka a{
+    color:#fff;
+    text-decoration: none;
+    transition: 0.6s;
+}
+.stopka a:hover{
+    color:#c00;
+}
+.stopka .gorna{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+}
+.stopka .footer{
+    width:100%;
+    height:100%;
+    flex:1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+.stopka .footer .linia{
+    display: flex;
+    align-items: center;
+    gap:15px;
+}
+.stopka .footer .adres{
+    display: flex;
+    gap:20px;
+    flex-direction: column;
+}
+.stopka .footer .linia i{
+    font-size: 1.5rem;
+    /*margin-right:15px;*/
+}
+.stopka .footer h3{
+    margin-bottom:20px;
+}
+.stopka .footer ul{
+    list-style-type: none;
+}
+.stopka .footer ul li{
+    margin-bottom:10px;
+}
+.stopka .footer img{
+    width:100px;
+    height:auto;
+   filter:invert(100%);
+    -webkit-filter: invert(100%);
+    text-align: center;
+    margin-bottom:20px;
+}
+.stopka .footer .zapis{
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+}
+.stopka .footer .zapis input[type="text"]{
+    background:none;
+    height: 40px;
+    padding:8px;
+    border:1px solid #fff;
+    color:#fff;
+}
+.stopka .footer .zapis a{
+    border:1px solid #fff;
+    padding:8px 20px;
+    width:50%;
+    text-align:center;
+    align-self: flex-end;
+    transition: 0.5s;
+}
+.stopka .footer .zapis a:hover{
+    background:#fff;
+    color:#000;
+}
+.stopka .dolna{
+    margin-top:30px;
+    border-top:1px solid rgba(255,255,255,0.6);
+    padding-top:30px;
+    width:75%;
+    text-align: center;
+    padding-bottom: 30px;
+}
+.test{
+    background: #eee;
+    width:300px;
+    height:100px;
+    padding:20px;
+}
+.full{
+    min-height: calc(100vh - 100px);/*ustawia wysokość dla diva na wysokość ekranu urządzenia pomniejszoną o wysokość nagłówka*/
+}
