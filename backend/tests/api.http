@@ -4,7 +4,7 @@
 
 @username=usercom
 
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyY29tIiwiZXhwIjoxNzE1NjE5NDI3fQ.ZjSwzOtBIIoRr1bTc2RQt8lUWaNS-mBsYsDha41Ry1g
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyY29tIiwiZXhwIjoxNzE1NzAxOTkzfQ.L4rXsQ2vm7ZDtR1LD9RKo5RsLBMMMcD2dgfRSIp3oHg
 
 
 ### Login - generate access token
@@ -34,4 +34,15 @@ Authorization: Bearer {{token}}
 ### Get rates
 GET {{baseApiUrl}}/api/rates/USD?date_from=2002-01-01
 Authorization: Bearer {{token}}
+
+
+### Bad request - Register user (create)
+POST {{baseApiUrl}}/api/register HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email": "user2@com.pl",
+    "username": "usercom"
+}
 

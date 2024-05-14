@@ -123,41 +123,40 @@ button:hover {
     background-color: #0056b3;
 }
 
+ 
+
 #tableRates {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid #fff;
-    overflow: hidden;
-    width: 100%;
-}
-
-#tableRates .table-row {
-    display: flex;
-}
-
-#tableRates .table-cell {
-    flex: 1;
+    border-collapse: collapse;
+    border: 2px solid rgb(140 140 140);
+    font-family: sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  
+  caption {
+    caption-side: bottom;
     padding: 10px;
-    border-right: 2px solid #fff;
+    font-weight: bold;
+  }
+  
+  #tableRates thead {
+  /*   background-color: rgb(228 240 245); */
+    background-color: rgba(71, 207, 115, 1);
+  }
+  
+  #tableRates th,
+  #tableRates td {
+    border: 1px solid rgb(160 160 160);
+    padding: 8px 10px;
+  }
+  
+  #tableRates td:last-of-type {
     text-align: center;
-}
-
-#tableRates .table-cell:last-child {
-    border-right: none;
-}
-
-#tableRates .table-header {
-    background-color: #007bff;
-    font-weight: 200;
-    display: flex;
-    justify-content: space-around;
-}
-
-#tableRates .table-container,
-#tableRates .table-cell,
-#tableRates .table-row {
-    
-}
+  }
+  
+  #tableRates tbody > tr:nth-of-type(even) {
+    background-color: rgb(237 238 242);
+  }
 
 
 

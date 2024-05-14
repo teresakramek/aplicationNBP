@@ -43,7 +43,7 @@
         </div>
         <button type="submit">Wyślij</button>
     </form>
-    <table id="tableRates">
+    <!-- <table id="tableRates">
         <tr class="table-row table-header">
           <th>Data</th>
           <th>Kurs</th>
@@ -52,6 +52,24 @@
             <td class="table-cell">{{ rate.date }}</td>
             <td class="table-cell">{{ rate.rate }}</td>
         </tr>
+      </table> -->
+
+      <table id="tableRates">
+        <thead>
+          <tr>
+            <th scope="col">Currency</th>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">Course</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <tr *ngFor="let rate of rates" class="table-row">
+                <td class="table-cell">{{ rate.date }}</td>
+                <td class="table-cell">{{ rate.rate }}</td>
+          </tr>
+        </tbody>
       </table>
   </div>
 </div>
