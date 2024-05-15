@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.container .box-right {
+    background: url(../../img/background_2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: 100vh;
+}
+
+.container .box-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+}
+
+.container .box-left form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.container .box-left form .box {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container .box-left form .box label {
+    text-align: center;
+}
+
+.container .box-left form input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.container .box-left form input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.container .box-left form input.error {
+    border-color: #dc3545;
+}
+
+.container .box-left form button {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #28a745;
+}
+
+.container .box-left form button:hover {
+    background-color: #218838;
+}
