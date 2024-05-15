@@ -46,3 +46,10 @@ Content-Type: application/json
     "username": "usercom"
 }
 
+### Login - generate access token
+POST {{baseApiUrl}}/api/login HTTP/1.1
+Accept: application/json
+Content-Type: application/x-www-form-urlencoded
+
+password={{password}}&username={{username}}
+

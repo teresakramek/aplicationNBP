@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AuthService } from '../auth.service'
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,24 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  errorMessage: string = ''
 
 
-  constructor() {
-    console.log('testing')
-  }
+  constructor(private authService: AuthService) {}
 
-  onSubmit(): void {
-    console.log(`Username: ${this.username}, Password: ${this.password}`);
+  login(username: string, password: string) {
+    this.authService.login(username, password).subscribe(
+      (response) => {
+        console.log(response)
+        console.log('Login successfull');
+      },
+      (error) => {
+        if (error.status === 401) {
+          this.errorMessage = 'Incorrect username or password.';
+        } else {
+          this.errorMessage = 'An error occurred. Please try again later.';
+        }
+      }
+    )
   }
 }
