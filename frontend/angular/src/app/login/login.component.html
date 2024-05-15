@@ -1,11 +1,21 @@
-<form (ngSubmit)="onSubmit()">
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" [(ngModel)]="username" required>
+<div class="container">
+    <div class="box-left">
+
     </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" [(ngModel)]="password" required>
+    <div class="box-right">
+        <form (ngSubmit)="onSubmit()">
+            <div class="box">
+              <label for="username">Username:</label>
+              <input type="text" id="username" name="username" [(ngModel)]="username" required>
+            </div>
+            <div class="box">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" [(ngModel)]="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
     </div>
-    <button type="submit">Login</button>
-</form>
+
+</div>
+
+

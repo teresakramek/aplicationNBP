@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.container .box-left {
+    background: url(../../img/background_1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    height: 100vh;
+}
+
+.container .box-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+}
+
+.container .box-right form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.container .box-right form .box {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container .box-right form .box label {
+    text-align: center;
+}
+
+.container .box-right form input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.container .box-right form input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.container .box-right form input.error {
+    border-color: #dc3545;
+}
+
+.container .box-right form button {
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #007bff;
+}
+
+.container .box-right form button:hover {
+    background-color: #0056b3;
+}
