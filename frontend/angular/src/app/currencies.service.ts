@@ -9,6 +9,6 @@ export class CurrenciesService {
   url = 'http://localhost:8000/api/currencies';
   constructor(private http: HttpClient) {}
   getCurrencies(): Observable<any> {
-    return this.http.get(this.url, { headers: { Accept: 'application/json'}});
+    return this.http.get(this.url, { headers: { Accept: 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` }});
   }
 }

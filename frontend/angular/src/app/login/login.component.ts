@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,13 +14,13 @@ export class LoginComponent {
   errorMessage: string = ''
 
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   login(username: string, password: string) {
     this.authService.login(username, password).subscribe(
       (response) => {
-        console.log(response)
-        console.log('Login successfull');
+        localStorage.setItem('token', response.access_token);
+        this.router.navigate(['dashboard'])
       },
       (error) => {
         if (error.status === 401) {
