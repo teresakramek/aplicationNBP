@@ -20,4 +20,7 @@ export class AuthService {
 
     return this.http.post<any>('http://localhost:8000/api/login', body, { headers });
   }
+  logout() {
+    localStorage.removeItem('token');
+  }
 }

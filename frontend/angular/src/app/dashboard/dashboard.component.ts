@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CurrenciesService } from '../currencies.service';
 import { NgForm } from '@angular/forms';
 import { RateService } from '../rate.service';
+import { AuthService } from '../auth.service'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +16,12 @@ export class DashboardComponent implements OnInit {
   rates: any = [];
   title = 'angular';
 
-  constructor(private currenciesService: CurrenciesService, private rateService: RateService) {}
+  constructor(
+    private currenciesService: CurrenciesService, 
+    private rateService: RateService,
+    private authService: AuthService, 
+    private router: Router 
+  ) {}
 
   ngOnInit(): void {
     this.currenciesService.getCurrencies().subscribe((data) => {
@@ -29,6 +36,12 @@ export class DashboardComponent implements OnInit {
       console.log(data)
       this.rates = data;
     });
+  }
+
+  logout() {
+    console.log('Test')
+    this.authService.logout();
+    this.router.navigate([''])
   }
 }
 

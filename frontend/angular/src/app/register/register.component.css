@@ -5,7 +5,7 @@
 }
 
 .container .box-right {
-    background: url(../../img/background_2.jpg);
+    background: url('../../img/background_2.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
