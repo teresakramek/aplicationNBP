@@ -23,4 +23,8 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
   }
+
+  register(username: string, email:string, password: string) {
+    return this.http.post<any>('http://localhost:8000/api/register', { username: username, email: email, password: password})
+  }
 }
