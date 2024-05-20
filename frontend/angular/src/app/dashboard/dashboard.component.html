@@ -30,13 +30,11 @@
       </div>
       <button type="submit">Wyślij</button>
     </form>
-    <table id="tableRates">
+    <table id="tableRates" *ngIf="rates.length">
       <thead>
         <tr>
-          <th scope="col">Currency</th>
-          <th scope="col">From</th>
-          <th scope="col">To</th>
-          <th scope="col">Course</th>
+          <th scope="col">Date</th>
+          <th scope="col">Rate</th>
         </tr>
       </thead>
       <tbody>

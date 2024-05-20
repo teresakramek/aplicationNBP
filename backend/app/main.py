@@ -1,7 +1,7 @@
 from typing import Annotated
 
 from fastapi import FastAPI, HTTPException, Depends, status
-from sqlalchemy.orm import Session
+from sqlalchemy.sql import text
 from datetime import datetime, timedelta
 from fastapi.middleware.cors import CORSMiddleware
 from service.rate import RateService
@@ -95,8 +95,10 @@ async def currencies(current_user: Annotated[User, Depends(get_current_active_us
 async def currencies(
     current_user: Annotated[User, Depends(get_current_active_user)],
 ):
-    """@TODO move to table of synchornized values"""
-    return {'currencies': ['USD', 'EUR', 'GPB']}
+    result = db.execute(text("SELECT DISTINCT currency FROM rates;")).fetchall()
+    map_result =  [currency[0] for currency in result]
+
+    return {"currencies": map_result}
 
 
 @app.get("/api/users/me/", response_model=User)
