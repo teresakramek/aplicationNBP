@@ -15,22 +15,26 @@ export class DashboardComponent implements OnInit {
   currencies: string[] = [];
   rates: any = [];
   title = 'angular';
-
+  minDate = "2002-01-02";
+  maxDate = new Date().toISOString().split('T')[0];;
+  
   constructor(
     private currenciesService: CurrenciesService, 
     private rateService: RateService,
     private authService: AuthService, 
-    private router: Router 
+    private router: Router,
+
   ) {}
+
+
 
   ngOnInit(): void {
     this.currenciesService.getCurrencies().subscribe((data) => {
       this.currencies = data['currencies'];
-    });
+    }); 
   }
 
   onSubmit(f: NgForm): void {
-    console.log(f.value);
     console.log('Teresa - dasz radę');
     this.rateService.getRate(f.value.currency, f.value.date_from, f.value.date_to).subscribe((data) => {
       console.log(data)
@@ -39,7 +43,6 @@ export class DashboardComponent implements OnInit {
   }
 
   logout() {
-    console.log('Test')
     this.authService.logout();
     this.router.navigate([''])
   }

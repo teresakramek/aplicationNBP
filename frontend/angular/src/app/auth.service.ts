@@ -27,4 +27,7 @@ export class AuthService {
   register(username: string, email:string, password: string) {
     return this.http.post<any>('http://localhost:8000/api/register', { username: username, email: email, password: password})
   }
+  getToken(): string {
+    return localStorage.getItem('token') || '';
+  }
 }
