@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { config } from './../../config';
 
 
 export interface Rate {
@@ -12,7 +13,7 @@ export interface Rate {
   providedIn: 'root'
 })
 export class RateService {
-  url = 'http://localhost:8000/api/rates/';
+  private readonly url = `${config.BACKEND_URL}/api/rates/`;
 
   constructor(private http: HttpClient) { }
 
