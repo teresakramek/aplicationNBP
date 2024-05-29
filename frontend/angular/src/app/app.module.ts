@@ -11,14 +11,16 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptorService } from './auth-interceptor.service';
-import { AuthService } from './auth.service'; 
+import { AuthService } from './auth.service';
+import { RateChartComponent } from './rate-chart/rate-chart.component'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    RateChartComponent
   ],
   imports: [
     BrowserModule,

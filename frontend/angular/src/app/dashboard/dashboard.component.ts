@@ -26,20 +26,12 @@ export class DashboardComponent implements OnInit {
 
   ) {}
 
-
-
   ngOnInit(): void {
-    this.currenciesService.getCurrencies().subscribe((data) => {
-      this.currencies = data['currencies'];
-    }); 
+    this.currenciesService.getCurrencies().subscribe((data) => this.currencies = data['currencies']); 
   }
 
   onSubmit(f: NgForm): void {
-    console.log('Teresa - dasz radę');
-    this.rateService.getRate(f.value.currency, f.value.date_from, f.value.date_to).subscribe((data) => {
-      console.log(data)
-      this.rates = data;
-    });
+    this.rateService.getRate(f.value.currency, f.value.date_from, f.value.date_to).subscribe((data) => this.rates = data);
   }
 
   logout() {

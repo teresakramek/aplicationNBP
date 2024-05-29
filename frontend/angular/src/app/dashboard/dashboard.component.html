@@ -30,6 +30,9 @@
       </div>
       <button type="submit">Wyślij</button>
     </form>
+    <div>
+      <app-rate-chart [rates]="rates"></app-rate-chart>
+    </div>
     <table id="tableRates" *ngIf="rates.length">
       <thead>
         <tr>
