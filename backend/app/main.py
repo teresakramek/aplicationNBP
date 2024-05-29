@@ -12,21 +12,22 @@ from fastapi.security import OAuth2PasswordRequestForm
 from security.security import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_active_user
 from schemas.schemas import Token, User, UserCreate, UserBase
 import user.user_manager as user_manager
+import os
 
 Base.metadata.create_all(bind=engine)
 
 db = next(get_db())
 
+
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4200"],
+    allow_origins=['http://localhost:4200'],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # healthcheck
 @app.get("/")

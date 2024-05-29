@@ -3,9 +3,10 @@ from typing import Union, Annotated
 from schemas.schemas import TokenData, User
 from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt
+# from jose import JWTError, jwt
 from fastapi import HTTPException, Depends, status
 import user.user_manager as user_manager
+import jwt
 
 # to get a string like this run:
 # openssl rand -hex 32

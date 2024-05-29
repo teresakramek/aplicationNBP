@@ -6,6 +6,7 @@ services:
     command: uvicorn main:app --reload --host 0.0.0.0 --port 8000
     environment:
       PORT: 8000
+      FRONTEND_URL: 'http://localhost:4200'
     ports:
       - '8000:8000'
     volumes:
