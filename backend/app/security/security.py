@@ -1,11 +1,11 @@
 from datetime import datetime, timedelta, timezone
 from typing import Union, Annotated
-from schemas import TokenData, User
+from schemas.schemas import TokenData, User
 from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from fastapi import HTTPException, Depends, status
-import user_manager
+import user.user_manager as user_manager
 
 # to get a string like this run:
 # openssl rand -hex 32

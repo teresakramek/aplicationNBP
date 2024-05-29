@@ -9,13 +9,11 @@ from database.database import engine, Base
 from model.models import Rate
 from database.database import get_db
 from fastapi.security import OAuth2PasswordRequestForm
-from security import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_active_user
-from schemas import Token, User, UserCreate, UserBase
-import user_manager
-
+from security.security import authenticate_user, create_access_token, ACCESS_TOKEN_EXPIRE_MINUTES, get_current_active_user
+from schemas.schemas import Token, User, UserCreate, UserBase
+import user.user_manager as user_manager
 
 Base.metadata.create_all(bind=engine)
-
 
 db = next(get_db())
 

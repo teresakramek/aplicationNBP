@@ -1,4 +1,4 @@
-from schemas import UserCreate
+from schemas.schemas import UserCreate
 from model import models
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
