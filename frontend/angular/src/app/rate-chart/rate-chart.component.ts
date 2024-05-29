@@ -9,35 +9,32 @@ import { Rate } from './../rate.service';
 })
 export class RateChartComponent implements OnChanges {
 
-  // add interface to the response
-  @Input() rates: Array<Rate>  = []
+  @Input() rates: Array<Rate> = []
 
   chart: any = null
 
   constructor() {}
 
   ngOnChanges(): void {
-    console.log('method on chart component')
 
     if (this.chart) {
-      console.log(this.chart.destroy())
+      this.chart.destroy()
     }
 
-    this.chart = new Chart('canvas', {
-      type: 'line',
-      data: {
-        labels: this.rates.map((rate: Rate) => rate.date),
-        datasets: [
-          {
-            label: 'Rates',
-            data: this.rates.map((rate: Rate) => rate.rate),
-            borderWidth: 1,
-          },
-        ],
-      },
-    });
-
-    console.log(this.chart)
+    if (this.rates.length) {
+      this.chart = new Chart('canvas', {
+        type: 'line',
+        data: {
+          labels: this.rates.map((rate: Rate) => rate.date),
+          datasets: [
+            {
+              label: '',
+              data: this.rates.map((rate: Rate) => rate.rate),
+              borderWidth: 1,
+            },
+          ],
+        },
+      });
+    }
   }
-
 }
