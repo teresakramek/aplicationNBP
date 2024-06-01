@@ -3,10 +3,10 @@ from typing import Union, Annotated
 from schemas.schemas import TokenData, User
 from passlib.context import CryptContext
 from fastapi.security import OAuth2PasswordBearer
-# from jose import JWTError, jwt
 from fastapi import HTTPException, Depends, status
 import user.user_manager as user_manager
 import jwt
+
 
 # to get a string like this run:
 # openssl rand -hex 32
@@ -54,7 +54,7 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
         if username is None:
             raise credentials_exception
         token_data = TokenData(username=username)
-    except JWTError:
+    except jwt.exceptions.InvalidTokenException:
         raise credentials_exception
     user = user_manager.get_user_by_username(username=token_data.username)
     if user is None:
