@@ -9,7 +9,7 @@ import { of } from 'rxjs';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-fdescribe('DashboardComponent', () => {
+describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
   let currenciesService: jasmine.SpyObj<CurrenciesService>;
